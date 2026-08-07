@@ -3081,11 +3081,14 @@ input, select, textarea {
 
 		/* Main */
 
-			#main {
+			#content-scroll {
 				margin-left: 30%;
+				width: calc(100% - 30%);
+			}
+
+			#main {
 				max-width: none;
 				padding: 6em 3em 3em 3em;
-				width: calc(100% - 30%);
 			}
 
 	}
