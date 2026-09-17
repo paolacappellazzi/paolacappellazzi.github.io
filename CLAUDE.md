@@ -18,13 +18,20 @@ both loaded via the Google Fonts `@import` at the top of `assets/css/main.css`.
 
 ## Structure
 
-- `index.html` &mdash; home: avatar, name/subtitle, then three separate sections (`#about`,
-  `#education`, `#research-interests`), each its own `<h2>`-headed block
+`index.html` is an overview/landing page: full intro (`#about`), then short teaser sections
+(`#education`, `#research-interests`, `#notes-teaser`) that each end in a `ul.actions` button
+linking to that topic's dedicated page, plus `#contact`. Detail lives on the dedicated pages, not
+on the homepage. The homepage's education teaser links to `cv.html`, not a separate education page
+&mdash; education and CV are merged into one page (a CV naturally includes one's education).
+
+- `index.html` &mdash; home/overview, see above
 - `research.html` &mdash; research description (MathJax loaded via CDN for inline math); same
   `header class="major"` / `h3` subsection pattern as Xavier's research page
 - `notes.html` &mdash; notes/resources as collapsible `<details><summary class="h2">...</summary>` blocks
   per topic, each containing `.publication-card` boxes with an `<ol>` of entries
-- `cv.html` &mdash; CV download button + inline PDF `<embed>`
+- `personal.html` &mdash; personal/non-academic page; currently a placeholder ("under construction")
+- `cv.html` &mdash; education list (`ul.clean-list`, under an `h3`), CV download button, and inline
+  PDF `<embed>`
 - `assets/css/main.css` &mdash; forked Strata stylesheet (accent color, fonts, and the
   `#content-scroll` layout rules are non-stock changes; everything else is unmodified template CSS)
 - `assets/js/`, `assets/webfonts/` &mdash; unmodified Strata template assets
@@ -32,8 +39,9 @@ both loaded via the Google Fonts `@import` at the top of `assets/css/main.css`.
 - `images/avatar.svg` &mdash; placeholder avatar (initials) shown in the header on every page
 - `images/bg.jpg` &mdash; Strata's header background image
 
-All four pages share the same `<header id="header">` (avatar/name/subtitle/nav) and
+All five pages share the same `<header id="header">` (avatar/name/subtitle/nav) and
 `<footer id="footer">` blocks &mdash; keep those two blocks in sync across pages if you edit one.
+The nav in the header is `Home — Research — Notes — Personal — CV`.
 
 ## Layout mechanics
 
@@ -45,15 +53,16 @@ hidden }` so the page itself never scrolls &mdash; only the right pane does. Thi
 above the 980px breakpoint; below it, Strata's existing mobile media query stacks the sidebar on
 top and `#content-scroll` reverts to normal block flow (see the `@media screen and (max-width:
 980px)` block in `main.css`). **When adding a page**, wrap its `#main` + `#footer` in
-`<div id="content-scroll">…</div>` exactly like the existing four pages, or it will render full-width
-under the fixed sidebar instead of scrolling correctly.
+`<div id="content-scroll">…</div>` exactly like the existing pages, or it will render full-width
+under the fixed sidebar instead of scrolling correctly. Also add the new page to the nav `<h5>`
+in the header block on all pages (see Structure above).
 
 ## Common edits
 
 **Update the CV**: replace `assets/CV.pdf` with the new file (same filename), no other changes needed.
 
 **Add a real photo**: replace `images/avatar.svg` with a real image (e.g. `images/avatar.jpg`) and
-update the `src` on the `<img>` inside `.image.avatar` in the header block, on all four pages.
+update the `src` on the `<img>` inside `.image.avatar` in the header block, on all pages.
 
 **Add a note/resource**: in `notes.html`, add an `<li>` inside the relevant `.publication-card`'s
 `<ol>`, or add a new `<details>` block following the existing pattern for a new topic.
