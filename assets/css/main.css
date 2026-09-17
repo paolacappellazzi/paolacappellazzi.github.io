@@ -3327,6 +3327,19 @@ input, select, textarea {
 				margin-bottom: 0;
 			}
 
+		.card-grid a.card {
+			display: block;
+			color: inherit;
+			border-bottom: none;
+			transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+		}
+
+			.card-grid a.card:hover {
+				background: rgba(201, 151, 74, 0.14);
+				transform: translateY(-3px);
+				box-shadow: 0 8px 20px rgba(17, 79, 82, 0.12);
+			}
+
 	.pill-list {
 		display: flex;
 		flex-wrap: wrap;
