@@ -6,17 +6,22 @@
 
 	document.addEventListener('DOMContentLoaded', function () {
 
-		var toggle = document.getElementById('email-toggle');
-		var popup = document.getElementById('email-popup');
+		var toggles = document.querySelectorAll('.email-toggle');
 
-		if (!toggle || !popup)
-			return;
+		toggles.forEach(function (toggle) {
 
-		popup.textContent = words;
+			var popup = toggle.nextElementSibling;
 
-		toggle.addEventListener('click', function (event) {
-			event.preventDefault();
-			popup.hidden = !popup.hidden;
+			if (!popup || !popup.classList.contains('email-popup'))
+				return;
+
+			popup.textContent = words;
+
+			toggle.addEventListener('click', function (event) {
+				event.preventDefault();
+				popup.hidden = !popup.hidden;
+			});
+
 		});
 
 	});
